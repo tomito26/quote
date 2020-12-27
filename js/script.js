@@ -3,6 +3,8 @@ let itemList = document.getElementById('items');
 
 // add submit  event
 form.addEventListener('submit',addQuote);
+// add click event on the delete button
+itemList.addEventListener('click',removeQuote);
 
 function addQuote(e){
     e.preventDefault()
@@ -23,6 +25,9 @@ function addQuote(e){
     cardHeader.className = 'card-header';
     //add text to the header
     cardHeader.appendChild(document.createTextNode('Quote'));
+    let delButton = document.createElement('i');
+    delButton.className = "far fa-trash-alt float-right delete";
+    cardHeader.appendChild(delButton);
     
     // add the header to the  card 
     card.appendChild(cardHeader);
@@ -50,8 +55,21 @@ function addQuote(e){
     itemList.appendChild(div)
     
     console.log(div);
+    let message  = document.getElementById('message');
+    // create message p element 
+    let messageP = document.createElement('p');
+    messageP.className = "alert alert-success";
+    messageP.appendChild(document.createTextNode('You have submited a quote'))
+    message.appendChild(messageP)
 
-
-    
 
 }
+
+// function removeQuote(e) {
+//   if (e.target.classList.contains("delete")) {
+//     if (confirm("Are you sure?")) {
+//       let div = e.target.parentElement;
+//       itemList.removeChild(div);
+//     };
+//   };
+// };
